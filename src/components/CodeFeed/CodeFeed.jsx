@@ -1,59 +1,67 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Highlight from "react-highlight";
 
 import Card from "../UI/Card";
+import CodeContext from "../../store/code-context";
 
 import useHttp from "../../hooks/use-http";
 
 const CodeFeed = (props) => {
-  const [tasks, setTasks] = useState([]);
+  const codeCtx = useContext(CodeContext);
 
-  const httpData = useHttp();
-  console.log(httpData);
+  // original
 
-  const { sendRequest: fetchTasks } = httpData;
+  // const [tasks, setTasks] = useState([]);
 
-  useEffect(() => {
-    const transformTask = (taskObject) => {
-      const loadedTasks = [];
+  // const httpData = useHttp();
 
-      for (const taskKey in taskObject) {
-        // loadedTasks.push({ id: taskKey, text: taskObject[taskKey].text });
-        loadedTasks.push({
-          title: taskObject[taskKey].snippet.title,
-          user: taskObject[taskKey].snippet.user,
-          codeSnippet: taskObject[taskKey].snippet.codeSnippet,
-        });
-        console.log(taskObject[taskKey].snippet.title);
-        console.log(loadedTasks);
-      }
+  // const { sendRequest: fetchTasks } = httpData;
 
-      setTasks(loadedTasks);
-    };
+  // useEffect(() => {
+  //   const transformTask = (taskObject) => {
+  //     const loadedTasks = [];
 
-    fetchTasks(
-      {
-        url: "https://codesnippet-29f37-default-rtdb.asia-southeast1.firebasedatabase.app/tasks.json",
-      },
-      transformTask
-    );
-  }, [fetchTasks]);
+  //     for (const taskKey in taskObject) {
+  //       console.log(taskKey);
+  //       // loadedTasks.push({ id: taskKey, text: taskObject[taskKey].text });
+  //       loadedTasks.push({
+  //         id: taskKey,
+  //         title: taskObject[taskKey].snippet.title,
+  //         user: taskObject[taskKey].snippet.user,
+  //         codeSnippet: taskObject[taskKey].snippet.codeSnippet,
+  //       });
+  //       console.log(loadedTasks);
+  //     }
 
-  console.log(tasks);
+  //     setTasks(loadedTasks);
+  //   };
+
+  //   fetchTasks(
+  //     {
+  //       url: "https://codesnippet-29f37-default-rtdb.asia-southeast1.firebasedatabase.app/tasks.json",
+  //     },
+  //     transformTask
+  //   );
+  // }, [fetchTasks]);
+
+  console.log(codeCtx);
+  const tasks = codeCtx.feedArr;
 
   return (
     <>
       {tasks.map((item) => {
         return (
-          <Card>
-            <div>
-              <h2>{item.title}</h2>
-            </div>
-            <Highlight className="javascript">{item.codeSnippet}</Highlight>
-            <div>
-              <p>{item.user}</p>
-            </div>
-          </Card>
+          <div key={item.id}>
+            <Card>
+              <div>
+                <h2>{item.title}</h2>
+              </div>
+              <Highlight className="javascript">{item.codeSnippet}</Highlight>
+              <div>
+                <p>{item.user}</p>
+              </div>
+            </Card>
+          </div>
         );
       })}
     </>

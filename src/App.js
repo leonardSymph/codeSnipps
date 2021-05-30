@@ -23,11 +23,8 @@ function App() {
     setSearchActive((prev) => !prev);
   };
 
-  const [codeState, setCodeState] = useState("");
-
-  const onFeedHandler = (data) => {
-    setCodeState(data);
-    console.log(codeState);
+  const userCodeHandler = () => {
+    console.log("working");
   };
 
   return (
@@ -35,16 +32,19 @@ function App() {
       <header className="App-header">
         <div className="navBar">
           <div className="Link" onClick={searchCodeHandler}>
-            <h1>Codes</h1>
+            <h1>SearchCode</h1>
           </div>
           <div className="Link" onClick={shareCodeHandler}>
             <h1>ShareCode</h1>
           </div>
+          <div className="Link" onClick={userCodeHandler}>
+            <h1>User</h1>
+          </div>
         </div>
         {searchActive ? <SearchFeed /> : ""}
-        {codeActive ? <CodeSnip onFeed={onFeedHandler} /> : ""}
+        {codeActive ? <CodeSnip /> : ""}
         <div>
-          <CodeFeed codeData={codeState} />
+          <CodeFeed />
         </div>
       </header>
     </div>

@@ -13,7 +13,6 @@ import styles from "./Editor.module.css";
 
 const Editor = (props) => {
   const onChange = (newValue) => {
-    console.log("change", newValue);
     props.onEditor(newValue);
   };
 

@@ -1,0 +1,8 @@
+.test {
+  border: 1px solid #444;
+  box-shadow: 0 0.5px 2px white;
+}
+
+.select {
+  margin-bottom: 5px;
+}

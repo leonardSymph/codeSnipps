@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Highlight from "react-highlight";
-import styles from "./CodeFeed.module.css";
+
+import Card from "../UI/Card";
 
 import useHttp from "../../hooks/use-http";
 
@@ -43,21 +44,17 @@ const CodeFeed = (props) => {
   return (
     <>
       {tasks.map((item) => {
-        if (item < 0) {
-          return <h2>No post</h2>;
-        } else {
-          return (
-            <div className={styles.feed}>
-              <div>
-                <h2>{item.title}</h2>
-              </div>
-              <Highlight className="javascript">{item.codeSnippet}</Highlight>
-              <div>
-                <p>{item.user}</p>
-              </div>
+        return (
+          <Card>
+            <div>
+              <h2>{item.title}</h2>
             </div>
-          );
-        }
+            <Highlight className="javascript">{item.codeSnippet}</Highlight>
+            <div>
+              <p>{item.user}</p>
+            </div>
+          </Card>
+        );
       })}
     </>
   );

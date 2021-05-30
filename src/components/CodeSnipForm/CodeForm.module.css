@@ -4,6 +4,10 @@ textarea {
   padding: 10px;
 }
 
+.hideText {
+  display: none;
+}
+
 .formContainer {
   display: flex;
   justify-content: center;

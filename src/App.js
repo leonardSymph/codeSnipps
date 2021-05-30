@@ -3,6 +3,7 @@ import { useState } from "react";
 
 import CodeSnip from "./components/CodeSnipForm/CodeSnip";
 import CodeFeed from "./components/CodeFeed/CodeFeed.jsx";
+import SearchFeed from "./components/SearchFeed/SearchFeed.jsx";
 
 function App() {
   const [codeActive, setCode] = useState(false);
@@ -40,7 +41,7 @@ function App() {
             <h1>ShareCode</h1>
           </div>
         </div>
-        {searchActive ? <input></input> : ""}
+        {searchActive ? <SearchFeed /> : ""}
         {codeActive ? <CodeSnip onFeed={onFeedHandler} /> : ""}
         <div>
           <CodeFeed codeData={codeState} />

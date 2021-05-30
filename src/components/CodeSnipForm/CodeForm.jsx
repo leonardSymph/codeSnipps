@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./CodeForm.module.css";
 import useHttp from "../../hooks/use-http";
 
+import Editor from "../Editor/Editor";
+
 const CodeForm = (props) => {
+  const [editorCode, setEditorCode] = useState("");
+
   const { sendRequest: sendTaskRequest } = useHttp();
 
   const onSubmitHandler = (event) => {
@@ -27,7 +31,19 @@ const CodeForm = (props) => {
           codeSnippet: code,
         },
       },
-    });
+    })
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const onEditorHandler = (code) => {
+    console.log(code);
+    setEditorCode(code);
+    console.log(editorCode);
   };
 
   return (
@@ -36,7 +52,14 @@ const CodeForm = (props) => {
         <form onSubmit={onSubmitHandler}>
           <input type="text" name="title" placeholder="title" />
           <input type="text" name="user" placeholder="name" />
-          <textarea type="text" name="inputText" spellCheck="false"></textarea>
+          <textarea
+            className={styles.hideText}
+            type="text"
+            name="inputText"
+            spellCheck="false"
+            value={editorCode}
+          ></textarea>
+          <Editor onEditor={onEditorHandler} />
           <button type="submit">done</button>
         </form>
       </div>

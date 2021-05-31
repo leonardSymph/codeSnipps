@@ -11,13 +11,15 @@ const SearchFeed = (props) => {
   };
 
   return (
-    <div className={styles.searchContainer}>
-      <input
-        className={styles.search}
-        type="text"
-        placeholder="Search Title"
-        onChange={searchChangeHandler}
-      />
+    <div className={styles.testContainer}>
+      <div className={styles.searchContainer}>
+        <input
+          className={styles.search}
+          type="text"
+          placeholder="Search Title"
+          onChange={searchChangeHandler}
+        />
+      </div>
     </div>
   );
 };

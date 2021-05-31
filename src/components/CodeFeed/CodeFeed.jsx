@@ -56,7 +56,9 @@ const CodeFeed = (props) => {
               <div>
                 <h2>{item.title}</h2>
               </div>
-              <Highlight className="javascript">{item.codeSnippet}</Highlight>
+              <div>
+                <Highlight className="javascript">{item.codeSnippet}</Highlight>
+              </div>
               <div>
                 <p>{item.user}</p>
               </div>

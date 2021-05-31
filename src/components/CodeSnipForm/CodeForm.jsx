@@ -7,37 +7,34 @@ import Editor from "../Editor/Editor";
 const CodeForm = (props) => {
   const [editorCode, setEditorCode] = useState("");
 
-  const { sendRequest: sendTaskRequest } = useHttp();
+  // const { sendRequest: sendTaskRequest } = useHttp();
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
-    const title = event.target[0].value;
-    const name = event.target[1].value;
-    const code = event.target[2].value;
-    const userCode = "Test";
+    // console.log(event);
 
-    sendTaskRequest({
-      url: "https://codesnippet-29f37-default-rtdb.asia-southeast1.firebasedatabase.app/tasks.json",
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: {
-        User: userCode,
-        snippet: {
-          user: name,
-          title: title,
-          codeSnippet: code,
-        },
-      },
-    })
-      .then((result) => {
-        console.log(result);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // sendTaskRequest({
+    //   url: "https://codesnippet-29f37-default-rtdb.asia-southeast1.firebasedatabase.app/tasks.json",
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: {
+    //     User: userCode,
+    //     snippet: {
+    //       user: name,
+    //       title: title,
+    //       codeSnippet: code,
+    //     },
+    //   },
+    // })
+    //   .then((result) => {
+    //     console.log(result);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   };
 
   const onEditorHandler = (code) => {
@@ -49,11 +46,11 @@ const CodeForm = (props) => {
   return (
     <>
       <div className={styles.formContainer}>
-        <form onSubmit={onSubmitHandler}>
+        <form onSubmit={onSubmitHandler} autoComplete="off">
           <input type="text" name="title" placeholder="title" />
           <input type="text" name="user" placeholder="name" />
           <textarea
-            className={styles.hideText}
+            // className={styles.hideText}
             type="text"
             name="inputText"
             spellCheck="false"

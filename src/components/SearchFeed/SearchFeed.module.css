@@ -1,9 +1,28 @@
 .searchContainer {
   display: flex;
   justify-content: center;
+  width: 15rem;
+  background-color: rgb(38, 39, 45);
+  padding: 10px 16px;
+  border-radius: 50px;
+}
+
+.testContainer {
+  display: flex;
+  justify-content: center;
 }
 
 .search {
-  padding: 5px;
-  margin-bottom: 5px;
+  padding: 3px;
+  margin-bottom: 3px;
+  background-color: rgb(38, 39, 45);
+  border: none;
+  color: white;
+  font-size: 1.1rem;
+  text-align: center;
+  overflow: hidden;
+}
+
+.search:focus {
+  outline: none;
 }

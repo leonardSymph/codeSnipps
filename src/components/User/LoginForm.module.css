@@ -1,0 +1,24 @@
+.formContainer {
+  display: flex;
+  justify-content: center;
+  width: 20rem;
+  background-color: white;
+  padding: 10px 16px;
+  border-radius: 50px;
+}
+
+.login {
+  padding: 3px;
+  margin-bottom: 3px;
+  background-color: white;
+  border: none;
+  color: #444;
+  font-size: 3rem;
+  text-align: center;
+  overflow: hidden;
+  width: 20rem;
+}
+
+.login:focus {
+  outline: none;
+}
